@@ -48,8 +48,10 @@ class Player
   end
 
   def print_party_pokemon
-    @party_pokemon.each { |pokemon|
-    puts "Pokémon name:" + pokemon.name}
+    @party_pokemon.each do |pokemon|
+      text = "Pokémon name: #{pokemon.name.capitalize} - XP to next level: #{pokemon.current_xp_to_next_level()} - Level: #{pokemon.current_level}"
+      puts text
+    end
   end
 
 end

@@ -27,13 +27,13 @@ def choose_inital_pokemon(player)
     player_choice = gets.to_s
     case player_choice.strip
     when "1"
-      player.add_pokemon_to_party(Pokemon.new(1))
+      player.add_pokemon_to_party(Pokemon.new(1, 5))
       return
     when "2"
-      player.add_pokemon_to_party(Pokemon.new(4))
+      player.add_pokemon_to_party(Pokemon.new(4, 5))
       return
     when "3"
-      player.add_pokemon_to_party(Pokemon.new(7))
+      player.add_pokemon_to_party(Pokemon.new(7, 5))
       return
     when "0"
       return
@@ -49,3 +49,7 @@ puts player
 puts "Your name is #{player::player_name}"
 choose_inital_pokemon(player)
 player.print_party_pokemon
+for i in 1..100
+  player::party_pokemon[0].add_xp(player::party_pokemon[0].current_xp_to_next_level())
+  player.print_party_pokemon
+end

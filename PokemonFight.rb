@@ -1,0 +1,4 @@
+class PokemonFight
+
+  
+end
