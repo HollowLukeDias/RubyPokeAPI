@@ -2,7 +2,7 @@ require_relative "PokeAPI"
 
 class Pokemon
 
-  attr_reader :first_type, :second_type, :current_level, :name
+  attr_reader :first_type, :second_type, :current_level, :name, :current_xp
 
   attr_reader :current_hp, :current_attack, :current_defense,
   :current_special_attack, :current_special_defense, :current_speed

@@ -1,10 +1,14 @@
+require_relative 'Pokemon'
+
 class Player
+  attr_reader :player_name
   attr_reader :party_pokemon, :computer_pokemon
   attr_reader :party_size
   $party_limit = 6
   
 
-  def initialize()
+  def initialize(name)
+    @player_name = name
     @computer_pokemon = []
     @party_pokemon = []
     @party_size = 0
@@ -41,6 +45,11 @@ class Player
 
   def release_pokemon(pokemon)
     @an_array.delete(pokemon)
+  end
+
+  def print_party_pokemon
+    @party_pokemon.each { |pokemon|
+    puts "Pokémon name:" + pokemon.name}
   end
 
 end

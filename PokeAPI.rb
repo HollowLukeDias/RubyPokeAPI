@@ -6,7 +6,7 @@ class PokeAPI
     begin
       response = RestClient::Request.new(
         :method => :get,
-        :url =>  'https://pokeapi.co/api/v2/pokemon/' + number.to_s + '/',
+        :url =>  'https://pokeapi.co/api/v2/pokemon/' + number.to_s.strip + '/',
       ).execute
       results = JSON.parse(response)
       return results
