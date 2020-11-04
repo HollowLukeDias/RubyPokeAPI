@@ -1,20 +1,4 @@
-require 'rest-client'
-require 'json'
-
-def get_pokemon_info_by_number(number)
-  begin
-    response = RestClient::Request.new(
-      :method => :get,
-      :url =>  'https://pokeapi.co/api/v2/pokemon/' + number.to_s + '/',
-    ).execute
-    results = JSON.parse(response)
-    return results
-  rescue => exception
-    puts "ERROR!"
-    puts exception
-    gets
-  end
-end
+require_relative "PokeAPI"
 
 class Pokemon
 
@@ -26,7 +10,7 @@ class Pokemon
 
   def initialize(pokemon_number)
     @current_level = 4
-    @result = get_pokemon_info_by_number(pokemon_number)
+    @result = PokeAPI.get_pokemon_info_by_number(pokemon_number)
     @name = @result["name"]
     @base_hp = @result["stats"][0]["base_stat"].to_i
     @base_attack = @result["stats"][1]["base_stat"].to_i
