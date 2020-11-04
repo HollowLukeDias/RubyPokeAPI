@@ -2,15 +2,21 @@ require_relative "PokeAPI"
 
 class Pokemon
 
-  attr_accessor :current_hp, :current_attack, :current_defense,
+  attr_reader :first_type, :second_type, :current_level, :name
+
+  attr_reader :current_hp, :current_attack, :current_defense,
   :current_special_attack, :current_special_defense, :current_speed
 
-  attr_reader :current_level, :name, :base_hp, :base_attack, :base_defense,
+  attr_reader :base_hp, :base_attack, :base_defense,
   :base_special_attack, :base_special_defense, :base_speed
 
   def initialize(pokemon_number)
-    @current_level = 4
+    @current_level = 5
     @result = PokeAPI.get_pokemon_info_by_number(pokemon_number)
+    @first_type = @result["types"][0]["type"]["name"].to_s
+    if (@result["types"][1] != nil)
+      @second_type = @result["types"][1]["type"]["name"]
+    end
     @name = @result["name"]
     @base_hp = @result["stats"][0]["base_stat"].to_i
     @base_attack = @result["stats"][1]["base_stat"].to_i
@@ -41,18 +47,4 @@ class Pokemon
     return (((2*base_value*@current_level)/100)+5).round
   end
 
-end
-
-puts "choose your pokemon index"
-number = gets.to_s.strip
-some_pokemon = Pokemon.new(number)
-puts "You chose: " + some_pokemon.name.capitalize()
-puts"HP: " +  some_pokemon.current_hp.to_s
-puts
-for i in 0..5
-  puts "level up!!"
-  puts "current level: #{some_pokemon.current_level}"
-  some_pokemon.level_up()
-  puts "HP: " + some_pokemon.current_hp.to_s
-  puts
 end
