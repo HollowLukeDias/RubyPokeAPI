@@ -20,7 +20,7 @@ class Pokemon
 
     @result = PokeAPI.get_pokemon_info_by_number(pokemon_index)
 
-    
+     
     #other info
     @first_type = @result["types"][0]["type"]["name"].to_s
     if (@result["types"][1] != nil)

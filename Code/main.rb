@@ -43,13 +43,15 @@ def choose_inital_pokemon(player)
   end
 end
 
-welcome()
-player = create_a_character()
-puts player
-puts "Your name is #{player::player_name}"
-choose_inital_pokemon(player)
-player.print_party_pokemon
-for i in 1..100
-  player::party_pokemon[0].add_xp(player::party_pokemon[0].current_xp_to_next_level())
-  player.print_party_pokemon
-end
+# welcome()
+# player = create_a_character()
+# puts player
+# puts "Your name is #{player::player_name}"
+# choose_inital_pokemon(player)
+# player.print_party_pokemon
+# for i in 1..100
+#   player::party_pokemon[0].add_xp(player::party_pokemon[0].current_xp_to_next_level())
+#   player.print_party_pokemon
+# end
+
+system("dir")
